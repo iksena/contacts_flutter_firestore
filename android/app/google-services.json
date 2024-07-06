@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "590504378458",
+    "firebase_url": "https://senabuwana.firebaseio.com",
+    "project_id": "senabuwana",
+    "storage_bucket": "senabuwana.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590504378458:android:06e56b0163b8216aa95863",
+        "android_client_info": {
+          "package_name": "com.medium.iksena.contacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590504378458-nqbetv8u88n4djmam2e9t897hl07j4tb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDymtiZo-yRr8KZ_67aXGRLEWDSW94l5ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590504378458-nqbetv8u88n4djmam2e9t897hl07j4tb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

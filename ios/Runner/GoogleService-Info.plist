@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyA8x11LxSntK7NNWXNs5l848V6ULQYYMSI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>590504378458</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.flutterContacts</string>
+	<key>PROJECT_ID</key>
+	<string>senabuwana</string>
+	<key>STORAGE_BUCKET</key>
+	<string>senabuwana.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:590504378458:ios:e9278ad2777de6f6a95863</string>
+	<key>DATABASE_URL</key>
+	<string>https://senabuwana.firebaseio.com</string>
+</dict>
+</plist>
