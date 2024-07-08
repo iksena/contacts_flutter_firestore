@@ -1,6 +1,6 @@
-# flutter_contacts
+# contacts_flutter_firestore
 
-A new Flutter project.
+Simple Contacts App with Flutter and Firebase Cloud Firestore
 
 ## Getting Started
 
@@ -28,3 +28,4 @@ the `lib/src/localization` directory.
 To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+
