@@ -4,8 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'firebase_options.dart';
 
 import 'src/app.dart';
-import 'src/settings/settings_controller.dart';
-import 'src/settings/settings_service.dart';
+import 'src/controllers/settings.dart';
+import 'src/services/settings.dart';
 
 void main() async {
   final settingsController = SettingsController(SettingsService());

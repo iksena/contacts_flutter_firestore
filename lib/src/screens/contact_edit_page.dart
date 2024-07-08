@@ -42,7 +42,7 @@ class _EditContactPageState extends State<EditContactPage> {
             children: [
               TextFormField(
                 initialValue: _name,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a name';
@@ -53,7 +53,7 @@ class _EditContactPageState extends State<EditContactPage> {
               ),
               TextFormField(
                 initialValue: _phone,
-                decoration: InputDecoration(labelText: 'Phone'),
+                decoration: const InputDecoration(labelText: 'Phone'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a phone number';
@@ -64,7 +64,7 @@ class _EditContactPageState extends State<EditContactPage> {
               ),
               TextFormField(
                 initialValue: _email,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an email';
@@ -75,7 +75,7 @@ class _EditContactPageState extends State<EditContactPage> {
               ),
               TextFormField(
                 initialValue: _address,
-                decoration: InputDecoration(labelText: 'Address'),
+                decoration: const InputDecoration(labelText: 'Address'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an address';
@@ -84,7 +84,7 @@ class _EditContactPageState extends State<EditContactPage> {
                 },
                 onSaved: (value) => _address = value!,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 child: Text(contact == null ? 'Add' : 'Update'),
                 onPressed: () {

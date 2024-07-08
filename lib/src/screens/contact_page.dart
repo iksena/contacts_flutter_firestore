@@ -9,10 +9,20 @@ class ContactsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Contacts')),
+      appBar: AppBar(
+        title: const Text('Contacts'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Get.toNamed(Routes.settings);
+            },
+          ),
+        ],
+      ),
       body: Obx(() {
         if (contactsController.isLoading.value) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         return ListView.builder(
@@ -21,20 +31,20 @@ class ContactsPage extends StatelessWidget {
             final contact = contactsController.contacts[index];
 
             return ListTile(
-              title: Text(contact.name),
-              subtitle: Text(contact.phone),
-              trailing: IconButton(
-                icon: Icon(Icons.delete),
-                onPressed: () => contactsController.deleteContact(contact.id),
-              ),
-              // onTap: () => Get.to(() => EditContactPage(contact: contact)),
-              onTap: () => Get.toNamed(Routes.editContact, arguments: contact)
-            );
+                title: Text(contact.name),
+                subtitle: Text(contact.phone),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () => contactsController.deleteContact(contact.id),
+                ),
+                // onTap: () => Get.to(() => EditContactPage(contact: contact)),
+                onTap: () =>
+                    Get.toNamed(Routes.editContact, arguments: contact));
           },
         );
       }),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () => Get.toNamed(Routes.editContact, arguments: null),
       ),
     );

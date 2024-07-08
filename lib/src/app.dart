@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_contacts/src/routes.dart';
 import 'package:flutter_contacts/src/screens/contact_edit_page.dart';
 import 'package:flutter_contacts/src/screens/contact_page.dart';
+import 'package:flutter_contacts/src/screens/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-import 'settings/settings_controller.dart';
-import 'settings/settings_view.dart';
+import 'controllers/settings.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({
