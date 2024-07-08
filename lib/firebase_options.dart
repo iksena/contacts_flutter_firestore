@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
   static final googleApiKeyAndroid = dotenv.env['GOOGLE_API_KEY_ANDROID'] ?? '';
   static final googleApiKeyIos = dotenv.env['GOOGLE_API_KEY_IOS'] ?? '';
   static final googleAppIdAndroid = dotenv.env['GOOGLE_APP_ID_ANDROID'] ??
-      '1:590504378458:android:06e56b0163b8216aa95863';
+      '1:590504378458:android:173f5296e4e8ce88a95863';
   static final googleAppIdIos = dotenv.env['GOOGLE_APP_ID_IOS'] ??
       '1:590504378458:ios:e9278ad2777de6f6a95863';
   static final googleSenderId =
