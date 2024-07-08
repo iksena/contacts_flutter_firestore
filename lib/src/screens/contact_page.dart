@@ -6,6 +6,10 @@ import 'package:get/get.dart';
 class ContactsPage extends StatelessWidget {
   final ContactsController contactsController = Get.put(ContactsController());
 
+  Future<void> _refreshContacts() async {
+    contactsController.fetchContacts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,22 +29,25 @@ class ContactsPage extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        return ListView.builder(
-          itemCount: contactsController.contacts.length,
-          itemBuilder: (context, index) {
-            final contact = contactsController.contacts[index];
+        return RefreshIndicator(
+          onRefresh: _refreshContacts,
+          child: ListView.builder(
+            itemCount: contactsController.contacts.length,
+            itemBuilder: (context, index) {
+              final contact = contactsController.contacts[index];
 
-            return ListTile(
-                title: Text(contact.name),
-                subtitle: Text(contact.phone),
-                trailing: IconButton(
-                  icon: const Icon(Icons.delete),
-                  onPressed: () => contactsController.deleteContact(contact.id),
-                ),
-                // onTap: () => Get.to(() => EditContactPage(contact: contact)),
-                onTap: () =>
-                    Get.toNamed(Routes.editContact, arguments: contact));
-          },
+              return ListTile(
+                  title: Text(contact.name),
+                  subtitle: Text(contact.phone),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () =>
+                        contactsController.deleteContact(contact.id),
+                  ),
+                  onTap: () =>
+                      Get.toNamed(Routes.editContact, arguments: contact));
+            },
+          ),
         );
       }),
       floatingActionButton: FloatingActionButton(

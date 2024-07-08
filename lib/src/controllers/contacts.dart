@@ -14,6 +14,7 @@ class ContactsController extends GetxController {
   }
 
   void fetchContacts() {
+    isLoading.value = true;
     firestoreService.getContacts().listen((contactData) {
       contacts.assignAll(contactData);
       isLoading.value = false;
