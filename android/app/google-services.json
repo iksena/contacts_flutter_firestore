@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590504378458:android:173f5296e4e8ce88a95863",
+        "mobilesdk_app_id": "1:590504378458:android:64ccb90307f5c8c0a95863",
         "android_client_info": {
-          "package_name": "com.medium.iksena.flutter_contacts"
+          "package_name": "com.example.flutter_contacts"
         }
       },
       "oauth_client": [
