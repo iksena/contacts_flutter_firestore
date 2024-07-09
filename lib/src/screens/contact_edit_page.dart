@@ -28,7 +28,7 @@ class _EditContactPageState extends State<EditContactPage> {
     _address = contact?.address ?? '';
   }
 
-  String? nameValidator(value) {
+  String? _nameValidator(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter a name';
     }
@@ -38,7 +38,7 @@ class _EditContactPageState extends State<EditContactPage> {
     return null;
   }
 
-  String? emailValidator(value) {
+  String? _emailValidator(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter an email';
     }
@@ -52,7 +52,7 @@ class _EditContactPageState extends State<EditContactPage> {
     return null;
   }
 
-  String? phoneValidator(value) {
+  String? _phoneValidator(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter a phone number';
     }
@@ -65,7 +65,7 @@ class _EditContactPageState extends State<EditContactPage> {
     return null;
   }
 
-  String? addressValidator(value) {
+  String? _addressValidator(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter an address';
     }
@@ -76,7 +76,7 @@ class _EditContactPageState extends State<EditContactPage> {
   }
 
   void Function() onPressedSubmit(contactsController) {
-    return () {
+    return () async {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         final savedContact = Contact(
@@ -86,15 +86,50 @@ class _EditContactPageState extends State<EditContactPage> {
             email: _email,
             address: _address);
 
+        bool success;
         if (contact == null) {
-          contactsController.addContact(savedContact);
+          success = await contactsController.addContact(savedContact);
         } else {
-          contactsController.updateContact(savedContact);
+          success = await contactsController.updateContact(savedContact);
         }
 
-        Get.back();
+        if (success) {
+          await _showSuccessDialog();
+        } else {
+          Get.snackbar(
+            'Error',
+            'An error occurred while saving the contact',
+            snackPosition: SnackPosition.BOTTOM,
+          );
+        }
       }
     };
+  }
+
+  Future<void> _showSuccessDialog() async {
+    await Get.dialog<void>(
+      AlertDialog(
+        title: const Text('Success'),
+        content: Text(contact == null
+            ? 'Contact added successfully'
+            : 'Contact updated successfully'),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Back'),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+          TextButton(
+            child: const Text('Continue'),
+            onPressed: () {
+              Get.back();
+              Get.back();
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -102,48 +137,60 @@ class _EditContactPageState extends State<EditContactPage> {
     final contactsController = Get.find<ContactsController>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(contact == null ? 'New Contact' : 'Edit Contact'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                initialValue: _name,
-                decoration: const InputDecoration(labelText: 'Name'),
-                validator: nameValidator,
-                onSaved: (value) => _name = value!,
-              ),
-              TextFormField(
-                initialValue: _phone,
-                decoration: const InputDecoration(labelText: 'Phone'),
-                validator: phoneValidator,
-                onSaved: (value) => _phone = value!,
-              ),
-              TextFormField(
-                initialValue: _email,
-                decoration: const InputDecoration(labelText: 'Email'),
-                validator: emailValidator,
-                onSaved: (value) => _email = value!,
-              ),
-              TextFormField(
-                initialValue: _address,
-                decoration: const InputDecoration(labelText: 'Address'),
-                validator: addressValidator,
-                onSaved: (value) => _address = value!,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: onPressedSubmit(contactsController),
-                child: Text(contact == null ? 'Add' : 'Update'),
-              ),
-            ],
-          ),
+        appBar: AppBar(
+          title: Text(contact == null ? 'New Contact' : 'Edit Contact'),
         ),
-      ),
-    );
+        body: Obx(() {
+          return Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        initialValue: _name,
+                        decoration: const InputDecoration(labelText: 'Name'),
+                        validator: _nameValidator,
+                        onSaved: (value) => _name = value!,
+                      ),
+                      TextFormField(
+                        initialValue: _phone,
+                        decoration: const InputDecoration(labelText: 'Phone'),
+                        validator: _phoneValidator,
+                        onSaved: (value) => _phone = value!,
+                      ),
+                      TextFormField(
+                        initialValue: _email,
+                        decoration: const InputDecoration(labelText: 'Email'),
+                        validator: _emailValidator,
+                        onSaved: (value) => _email = value!,
+                      ),
+                      TextFormField(
+                        initialValue: _address,
+                        decoration: const InputDecoration(labelText: 'Address'),
+                        validator: _addressValidator,
+                        onSaved: (value) => _address = value!,
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: onPressedSubmit(contactsController),
+                        child: Text(contact == null ? 'Add' : 'Update'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              if (contactsController.isLoading.value)
+                Container(
+                  color: Colors.black.withOpacity(0.5),
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+            ],
+          );
+        }));
   }
 }

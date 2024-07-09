@@ -21,12 +21,30 @@ class ContactsController extends GetxController {
     });
   }
 
-  void addContact(Contact contact) {
-    firestoreService.addContact(contact);
+  Future<bool> addContact(Contact contact) async {
+    try {
+      isLoading.value = true;
+      await firestoreService.addContact(contact);
+    } catch (e) {
+      isLoading.value = false;
+      return false;
+    }
+
+    isLoading.value = false;
+    return true;
   }
 
-  void updateContact(Contact contact) {
-    firestoreService.updateContact(contact);
+  Future<bool> updateContact(Contact contact) async {
+    try {
+      isLoading.value = true;
+      await firestoreService.updateContact(contact);
+    } catch (e) {
+      isLoading.value = false;
+      return false;
+    }
+
+    isLoading.value = false;
+    return true;
   }
 
   void deleteContact(String id) {
