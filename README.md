@@ -24,3 +24,5 @@ GOOGLE_STORAGE_BUCKET=senabuwana.appspot.com
 2. Install Flutter SDK for Android and iOS development by following [this tutorial](https://docs.flutter.dev/get-started/install)
 
 3. In your terminal, run `flutter run` to start the project in your device or emulator
+
+4. To try directly this project without setting up, download app-release.apk in this repository and install on you Android device
