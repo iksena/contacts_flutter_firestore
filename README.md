@@ -4,28 +4,23 @@ Simple Contacts App with Flutter and Firebase Cloud Firestore
 
 ## Getting Started
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+You will need to create a Google Firebase account and create a Cloud FireStore database to be used in this app. Follow [this documentation](https://firebase.google.com/docs/firestore) to do it.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Using this project
 
-## Assets
+To use this project, follow these steps:
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
+1. Create .env file in the root project folder and put Google API Key and App ID like below:
+```
+GOOGLE_API_KEY_ANDROID=
+GOOGLE_API_KEY_IOS=
+GOOGLE_APP_ID_ANDROID=
+GOOGLE_APP_ID_IOS=
+GOOGLE_SENDER_ID=
+GOOGLE_PROJECT_ID=senabuwana
+GOOGLE_DATABASE_URL=https://senabuwana.firebaseio.com
+GOOGLE_STORAGE_BUCKET=senabuwana.appspot.com
+```
+2. Install Flutter SDK for Android and iOS development by following [this tutorial](https://docs.flutter.dev/get-started/install)
 
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
-
-## Localization
-
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
-
+3. In your terminal, run `flutter run` to start the project in your device or emulator
