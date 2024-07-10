@@ -2,9 +2,29 @@ import 'package:flutter/material.dart';
 
 import '../controllers/settings.dart';
 
-class SettingsView extends StatelessWidget {
+class SettingsView extends StatefulWidget {
   const SettingsView({super.key, required this.controller});
   final SettingsController controller;
+
+  @override
+  _SettingsViewState createState() => _SettingsViewState();
+}
+
+class _SettingsViewState extends State<SettingsView> {
+  late ThemeMode _selectedThemeMode;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedThemeMode = widget.controller.themeMode;
+  }
+
+  void _setThemeMode(ThemeMode? newThemeMode) {
+    setState(() {
+      _selectedThemeMode = newThemeMode!;
+    });
+    widget.controller.updateThemeMode(newThemeMode);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +35,8 @@ class SettingsView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: DropdownButton<ThemeMode>(
-          value: controller.themeMode,
-          onChanged: controller.updateThemeMode,
+          value: _selectedThemeMode,
+          onChanged: _setThemeMode,
           items: const [
             DropdownMenuItem(
               value: ThemeMode.system,

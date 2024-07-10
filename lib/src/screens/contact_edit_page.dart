@@ -108,18 +108,20 @@ class _EditContactPageState extends State<EditContactPage> {
 
   Future<void> _showSuccessDialog() async {
     await Get.dialog<void>(
+      barrierDismissible: false,
       AlertDialog(
         title: const Text('Success'),
         content: Text(contact == null
             ? 'Contact added successfully'
             : 'Contact updated successfully'),
         actions: <Widget>[
-          TextButton(
-            child: const Text('Back'),
-            onPressed: () {
-              Get.back();
-            },
-          ),
+          if (contact != null)
+            TextButton(
+              child: const Text('Dismiss'),
+              onPressed: () {
+                Get.back();
+              },
+            ),
           TextButton(
             child: const Text('Continue'),
             onPressed: () {
